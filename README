@@ -125,7 +125,7 @@ at run time since the little model has the same size as the regular one
 (except for the increased sparsity).
 
 
-===== SETUP =====
+===== SETUP 1 =====
 
 apt-get -qq install build-essential autoconf libtool automake pkg-config
 git clone https://github.com/adi9820/rnnoise.git
@@ -138,3 +138,29 @@ autoreconf -i
 ./configure CFLAGS="-O3 -march=native"
 make -j$(nproc)
 cd ..
+
+
+===== SETUP 2 =====
+# Install dependencies (Ubuntu/Debian)
+sudo apt update
+sudo apt install build-essential autoconf automake libtool
+
+# Clone the repo (if not already)
+git clone https://github.com/adi9820/rnnoise.git
+cd rnnoise
+
+# Clean up any previous builds (optional, but good practice)
+make clean || true
+
+# Enable all CPU features your machine supports (including AVX2 if available)
+export CFLAGS="-march=native"
+
+# Configure with runtime CPU detection for x86
+./autogen.sh
+./configure --enable-x86-rtcd
+
+# Build
+make
+
+# Optionally, install (system-wide)
+sudo make install
