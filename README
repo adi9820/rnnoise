@@ -123,3 +123,18 @@ model, rename rnnoise_data_little.c to rnnoise_data.c. It is possible
 to build both the regular and little binary weights and load any of them
 at run time since the little model has the same size as the regular one
 (except for the increased sparsity).
+
+
+### Installation
+
+apt-get -qq install build-essential autoconf libtool automake pkg-config
+git clone https://github.com/adi9820/rnnoise.git
+cd rnnoise
+ wget https://media.xiph.org/rnnoise/models/rnnoise_data-0a8755f8e2d834eff6a54714ecc7d75f9932e845df35f8b59bc52a7cfe6e8b37.tar.gz
+tar -xzf rnnoise_data-0a8755f8e2d834eff6a54714ecc7d75f9932e845df35f8b59bc52a7cfe6e8b37.tar.gz
+cd ./rnnoise
+apt-get update && apt-get install -y build-essential autoconf libtool pkg-config ffmpeg
+autoreconf -i
+./configure CFLAGS="-O3 -march=native"
+make -j$(nproc)
+cd ..
