@@ -164,3 +164,4 @@ make
 
 # Optionally, install (system-wide)
 sudo make install
+cd ..
