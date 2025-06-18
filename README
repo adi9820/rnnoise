@@ -125,7 +125,7 @@ at run time since the little model has the same size as the regular one
 (except for the increased sparsity).
 
 
-### Installation
+===== SETUP =====
 
 apt-get -qq install build-essential autoconf libtool automake pkg-config
 git clone https://github.com/adi9820/rnnoise.git
